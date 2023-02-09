@@ -18,8 +18,12 @@ export class ReservesWrapper {
     return this.rawReserves.stats.find(stat => stat.key === coinAddress)?.value;
   };
 
-  getConfigByCoinAddress = (coinAddress: string) => {
+  getReserveConfig = (coinAddress: string) => {
     return this.getReserve(coinAddress)?.reserve_config;
+  };
+
+  getInterestConfig = (coinAddress: string) => {
+    return this.getReserve(coinAddress)?.interest_rate_config;
   };
 
   getTotalAsset = (coinAddress: string) => {
@@ -29,6 +33,10 @@ export class ReservesWrapper {
     const { total_borrowed, total_cash_available } = reserve;
 
     return total_borrowed + total_cash_available;
+  };
+
+  getBorrowed = (coinAddress: string) => {
+    return this.getReserve(coinAddress)?.total_borrowed;
   };
 
   getBorrowApy = (coinAddress: string) => {

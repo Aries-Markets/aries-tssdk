@@ -1,1 +1,3 @@
-require('jest-fetch-mock').enableMocks();
+import fetch from 'node-fetch';
+
+global.fetch = fetch;

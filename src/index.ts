@@ -29,29 +29,29 @@ export class AriesSDK {
       return profileCache;
     };
 
-    const initProfile = async () => {
+    const initProfile = () => {
       return this.sdk.controller
         .registerUser({ default_profile_name: 'Main Account' })
         .makePayload();
     };
 
-    const addProfile = async (profileName: string) => {
+    const addProfile = (profileName: string) => {
       return this.sdk.controller
         .addSubaccount({ profile_name: profileName })
         .makePayload();
     };
 
-    const deposit = async (
+    const deposit = (
       profileName: string,
       coinAddress: string,
-      lamports: Big,
+      lamports: string,
       repayOnly = false
     ) => {
       return this.sdk.controller
         .deposit(
           {
             profile_name: profileName,
-            amount: lamports,
+            amount: Big(lamports),
             repay_only: repayOnly,
           },
           { Coin0: coinAddress }
@@ -59,17 +59,17 @@ export class AriesSDK {
         .makePayload();
     };
 
-    const withdraw = async (
+    const withdraw = (
       profileName: string,
       coinAddress: string,
-      lamports: Big,
+      lamports: string,
       allowBorrow = false
     ) => {
       return this.sdk.controller
         .withdraw(
           {
             profile_name: profileName,
-            amount: lamports,
+            amount: Big(lamports),
             allow_borrow: allowBorrow,
           },
           { Coin0: coinAddress }
@@ -86,7 +86,7 @@ export class AriesSDK {
     };
   };
 
-  reservesCache: Reserves | null = null;
+  private reservesCache: Reserves | null = null;
 
   getReserves = async (useCache = false) => {
     if (useCache && this.reservesCache) {
@@ -107,15 +107,17 @@ export class AriesSDK {
     profileName: string,
     repayCoinAddr: string,
     withdrawCoinAddr: string,
-    lamports: Big
+    lamports: string
   ) => {
-    return this.sdk.controller.liquidateAndRedeem(
-      {
-        liquidatee_addr: account,
-        liquidatee_profile_name: profileName,
-        amount: lamports,
-      },
-      { RepayCoin: repayCoinAddr, WithdrawCoin: withdrawCoinAddr }
-    );
+    return this.sdk.controller
+      .liquidateAndRedeem(
+        {
+          liquidatee_addr: account,
+          liquidatee_profile_name: profileName,
+          amount: Big(lamports),
+        },
+        { RepayCoin: repayCoinAddr, WithdrawCoin: withdrawCoinAddr }
+      )
+      .makePayload();
   };
 }
