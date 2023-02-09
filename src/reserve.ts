@@ -1,4 +1,4 @@
-import { Reserves } from "@aries-markets/api";
+import { Reserves } from '@aries-markets/api';
 
 export class ReservesWrapper {
   rawReserves: Reserves;
@@ -8,15 +8,14 @@ export class ReservesWrapper {
   }
 
   getList = () => {
-    return this.rawReserves.stats.map((stat) => ({
+    return this.rawReserves.stats.map(stat => ({
       coinAddress: stat.key,
       ...stat.value,
     }));
   };
 
   getReserve = (coinAddress: string) => {
-    return this.rawReserves.stats.find((stat) => stat.key === coinAddress)
-      ?.value;
+    return this.rawReserves.stats.find(stat => stat.key === coinAddress)?.value;
   };
 
   getConfigByCoinAddress = (coinAddress: string) => {

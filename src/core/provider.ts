@@ -1,6 +1,6 @@
-import { AptosProvider } from "@aries-markets/create-sdk";
-import { AptosClient } from "aptos";
-import { argToString } from "./serializer";
+import { AptosProvider } from '@aries-markets/create-sdk';
+import { AptosClient } from 'aptos';
+import { argToString } from './serializer';
 
 const GAP_UNIT = 100;
 const MAX_GAS_AMOUNT = 100000;
@@ -8,7 +8,7 @@ export const MAX_GAS_PER_TX = GAP_UNIT * MAX_GAS_AMOUNT;
 
 export const createProvider = (client: AptosClient) => {
   const processData = (item: any) => item;
-  const getResource: AptosProvider["getResource"] = async ({
+  const getResource: AptosProvider['getResource'] = async ({
     program,
     module,
     address,
@@ -22,7 +22,7 @@ export const createProvider = (client: AptosClient) => {
     return processData(res.data) as Record<string, unknown>;
   };
 
-  type GetGenericRes = AptosProvider["getGenericResources"];
+  type GetGenericRes = AptosProvider['getGenericResources'];
   const getGenericResources: GetGenericRes = async ({
     module,
     address,
@@ -32,14 +32,14 @@ export const createProvider = (client: AptosClient) => {
     // type: 0x1::AptosAccount::Coin
     return processData(
       res
-        .filter((resource) =>
+        .filter(resource =>
           resource.type.includes(`${module}::${genericResourceType}`)
         )
-        .map((v) => ({ ...v.data, resourceType: v.type }))
+        .map(v => ({ ...v.data, resourceType: v.type }))
     );
   };
 
-  type GetResByType = AptosProvider["getGenericResourceByType"];
+  type GetResByType = AptosProvider['getGenericResourceByType'];
   const getResourceByType: GetResByType = async ({
     program,
     module,
@@ -49,12 +49,12 @@ export const createProvider = (client: AptosClient) => {
   }) => {
     const res = await client.getAccountResource(
       address,
-      `${program}::${module}::${genericResourceType}<${typeArgs.join(", ")}>`
+      `${program}::${module}::${genericResourceType}<${typeArgs.join(', ')}>`
     );
     return processData(res.data) as Record<string, unknown>;
   };
 
-  const makePayload: AptosProvider["makePayload"] = ({
+  const makePayload: AptosProvider['makePayload'] = ({
     program,
     module,
     args,
@@ -62,7 +62,7 @@ export const createProvider = (client: AptosClient) => {
     functionName,
   }) => {
     const payload = {
-      type: "entry_function_payload",
+      type: 'entry_function_payload',
       function: `${program}::${module}::${functionName}`,
       type_arguments: typeArgs,
       arguments: args.map(({ value, moveType }) =>
@@ -73,18 +73,12 @@ export const createProvider = (client: AptosClient) => {
     return payload;
   };
 
-  const sendTx: AptosProvider["sendTx"] = async ({
-    program,
-    module,
-    args,
-    typeArgs,
-    functionName,
-  }) => {
-    throw new Error("Unsupported");
+  const sendTx: AptosProvider['sendTx'] = async () => {
+    throw new Error('Unsupported');
   };
 
-  const simulateTx: AptosProvider["simulateTx"] = async () => {
-    throw new Error("Unsupported");
+  const simulateTx: AptosProvider['simulateTx'] = async () => {
+    throw new Error('Unsupported');
   };
 
   const provider: AptosProvider = {
@@ -95,7 +89,7 @@ export const createProvider = (client: AptosClient) => {
     simulateTx,
     makePayload,
     getWalletAddress: () => {
-      throw new Error("Unsupported");
+      throw new Error('Unsupported');
     },
     client,
   };

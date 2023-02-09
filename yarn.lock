@@ -2759,6 +2759,13 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
+cross-fetch@^3.0.4:
+  version "3.1.5"
+  resolved "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
+  dependencies:
+    node-fetch "2.6.7"
+
 cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4693,6 +4700,14 @@ jest-environment-node@^25.5.0:
     jest-util "^25.5.0"
     semver "^6.3.0"
 
+jest-fetch-mock@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/jest-fetch-mock/-/jest-fetch-mock-3.0.3.tgz#31749c456ae27b8919d69824f1c2bd85fe0a1f3b"
+  integrity sha512-Ux1nWprtLrdrH4XwE7O7InRY6psIi3GOsqNESJgMJ+M5cv4A8Lh7SN9d2V2kKRZ8ebAfcd1LNyZguAOb6JiDqw==
+  dependencies:
+    cross-fetch "^3.0.4"
+    promise-polyfill "^8.1.3"
+
 jest-get-type@^25.2.6:
   version "25.2.6"
   resolved "https://registry.npmjs.org/jest-get-type/-/jest-get-type-25.2.6.tgz#0b0a32fab8908b44d508be81681487dbabb8d877"
@@ -5478,6 +5493,13 @@ node-fetch@2, node-fetch@^2.1.6:
   dependencies:
     whatwg-url "^5.0.0"
 
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+  dependencies:
+    whatwg-url "^5.0.0"
+
 node-gyp-build@^4.3.0:
   version "4.6.0"
   resolved "https://registry.npmjs.org/node-gyp-build/-/node-gyp-build-4.6.0.tgz#0c52e4cbf54bbd28b709820ef7b6a3c2d6209055"
@@ -5922,6 +5944,11 @@ prom-client@^14.1.1:
   integrity sha512-hFU32q7UZQ59bVJQGUtm3I2PrJ3gWvoCkilX9sF165ks1qflhugVCeK+S1JjJYHvyt3o5kj68+q3bchormjnzw==
   dependencies:
     tdigest "^0.1.1"
+
+promise-polyfill@^8.1.3:
+  version "8.3.0"
+  resolved "https://registry.npmjs.org/promise-polyfill/-/promise-polyfill-8.3.0.tgz#9284810268138d103807b11f4e23d5e945a4db63"
+  integrity sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==
 
 prompts@^2.0.1:
   version "2.4.2"
@@ -7594,3 +7621,8 @@ yargs@^15.3.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+zod@^3.20.5:
+  version "3.20.5"
+  resolved "https://registry.npmjs.org/zod/-/zod-3.20.5.tgz#7c48cb4924da6ebbc2625fa90fff92140a64fd0b"
+  integrity sha512-BTAAliwfoB9dWf2hC+TXlyWKk/YTqRGZjHQR0WLC2A2pzierWo7KuQ1ebjS4SNaFaxg/lDItzl9/QTgLjcHbgw==

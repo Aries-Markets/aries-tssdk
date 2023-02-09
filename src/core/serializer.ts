@@ -6,8 +6,8 @@ import {
   isNil,
   get,
   isArray,
-} from "lodash-es";
-import Big from "big.js";
+} from 'lodash-es';
+import Big from 'big.js';
 
 export const argToString = (val: unknown, moveType: string): any => {
   if (isNumber(val)) {
@@ -19,7 +19,7 @@ export const argToString = (val: unknown, moveType: string): any => {
   }
 
   if (isString(val)) {
-    if (moveType === "address" || moveType === "&signer") {
+    if (moveType === 'address' || moveType === '&signer') {
       return val;
     }
 
@@ -32,9 +32,9 @@ export const argToString = (val: unknown, moveType: string): any => {
     return val as any;
   }
 
-  if (moveType === "vector") {
+  if (moveType === 'vector') {
     return (val as Array<unknown>).map(
-      (e) => argToString(e, "") as string | number | boolean
+      e => argToString(e, '') as string | number | boolean
     );
   }
 
@@ -42,4 +42,4 @@ export const argToString = (val: unknown, moveType: string): any => {
 };
 
 const isBig = (n: any): n is Big =>
-  !isNil(get(n, "s")) && !isNil(get(n, "e")) && isArray(get(n, "c"));
+  !isNil(get(n, 's')) && !isNil(get(n, 'e')) && isArray(get(n, 'c'));
