@@ -190,4 +190,4 @@ struct Loan has store, drop {
 [twitter-url]: https://twitter.com/AriesMarkets
 [twitter-image]: https://img.shields.io/twitter/url?label=Aries%20Markets%20Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2FAriesMarkets
 [discord-image]: https://img.shields.io/discord/1000012426479153172?label=Discord&logo=discord&style=flat~~~~
-[discord-url]: https://discord.com/invite/ariesmarkets
+[discord-url]: https://discord.com/invite/wD97KT29uh
