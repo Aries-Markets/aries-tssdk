@@ -30,9 +30,9 @@ export class ReservesWrapper {
     const reserve = this.getReserve(coinAddress);
     if (!reserve) return 0;
 
-    const { total_borrowed, total_cash_available } = reserve;
+    const { total_borrowed, total_cash_available, reserve_amount } = reserve;
 
-    return total_borrowed + total_cash_available;
+    return total_borrowed + total_cash_available - reserve_amount;
   };
 
   getBorrowed = (coinAddress: string) => {
@@ -81,11 +81,14 @@ export class ReservesWrapper {
     const reserve = this.getReserve(coinAddress);
     if (!reserve) return 0;
 
-    const { total_borrowed } = reserve;
+    const {
+      total_borrowed,
+      reserve_config: { reserve_ratio },
+    } = reserve;
     const total_asset = this.getTotalAsset(coinAddress);
 
     const utilization = total_asset === 0 ? 0 : total_borrowed / total_asset;
     const borrowApy = this.getBorrowApy(coinAddress);
-    return borrowApy * utilization;
+    return (borrowApy * utilization * (100 - reserve_ratio)) / 100;
   };
 }
