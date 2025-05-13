@@ -20,7 +20,7 @@
     "analyze": "size-limit --why"
   },
   "dependencies": {
-    "@aries-markets/api": "^0.0.14",
+    "@aries-markets/api": "^0.0.11",
     "@aries-markets/aries-tssdk": "0.0.8",
     "@types/big.js": "^6.1.6",
     "@types/lodash-es": "^4.17.6",
